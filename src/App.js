@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import adhan from "adhan";
 
 class App extends Component {
   render() {
+    let coordinates = new adhan.Coordinates(35.78056, -78.6389);
+    let date = new Date(2019, 2, 22);
+    let params = adhan.CalculationMethod.MuslimWorldLeague();
+    let prayerTimes = new adhan.PrayerTimes(coordinates, date, params);
+    console.log(prayerTimes)
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+          {JSON.stringify(prayerTimes.fajr)}
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          
+           
+
         </header>
       </div>
     );
